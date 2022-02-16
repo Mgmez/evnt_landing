@@ -23,7 +23,7 @@ function AppAppBar() {
             href="/"
             sx={{ fontSize: 24 }}
           >
-            <img 
+            <img
             //src='https://evnt.com.mx/img/logo_png_01.822386fa.svg'
             />
             {'Evnt'}
@@ -34,7 +34,7 @@ function AppAppBar() {
               color="inherit"
               variant="h6"
               underline="none"
-              href="https://evnt.com.mx"
+              href="https://app.evnt.com.mx"
               sx={{ ...rightLink, color: 'secondary.main' }}
             >
               {'Catalogo'}
@@ -43,7 +43,7 @@ function AppAppBar() {
               color="inherit"
               variant="h6"
               underline="none"
-              href="https://evnt.com.mx/login"
+              href="https://app.evnt.com.mx/login"
               sx={rightLink}
             >
               {'Iniciar Sesión'}
@@ -51,7 +51,7 @@ function AppAppBar() {
             <Link
               variant="h6"
               underline="none"
-              href="https://evnt.com.mx/auth-register-v1"
+              href="https://app.evnt.com.mx/auth-register-v1"
               sx={{ ...rightLink, color: 'secondary.main' }}
             >
               {'Registrarse'}

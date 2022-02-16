@@ -5,43 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbe83390-20a2-41c3-8173-d471327dce5a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/Categorias.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/Evento.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/ForgotPassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/ForgotPassword.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/RegistrarCliente.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/SignIn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/SignUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/views/AppAppBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/views/AppAppBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/Steps.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Steps.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/components/AppBar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/components/Button.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/components/Markdown.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/components/Paper.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/components/Snackbar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/components/TextField.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/components/Toolbar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/components/Typography.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/form/FormButton.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/form/FormFeedback.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/form/RFTextField.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/form/defer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/form/validation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/theme.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/views/AppAppBar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/views/AppFooter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/views/AppForm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/views/ProductCTA.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/views/ProductCategories.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/views/ProductHero.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/views/ProductHeroLayout.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/views/ProductHowItWorks.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/views/ProductSmokingHero.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/views/ProductValues.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/withRoot.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -152,8 +152,8 @@ function SignUp() {
                           onChange={handleChangeIsPrivate}
                           required
                         >
-                          <MenuItem value={"Privado"}>Privado</MenuItem>
-                          <MenuItem value={"Publico"}>Publico</MenuItem>
+                          <MenuItem value={true}>Privado</MenuItem>
+                          <MenuItem value={false}>Publico</MenuItem>
                         </Select>
                   </FormControl>
                 </Grid>
