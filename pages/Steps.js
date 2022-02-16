@@ -6,15 +6,15 @@ import StepLabel from '@mui/material/StepLabel';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import { Field, Form, FormSpy } from 'react-final-form';
-import Typography from './modules/components/Typography';
-import AppFooter from './modules/views/AppFooter';
-import AppAppBar from './modules/views/AppAppBar';
-import AppForm from './modules/views/AppForm';
-import { email, required } from './modules/form/validation';
-import RFTextField from './modules/form/RFTextField';
-import FormButton from './modules/form/FormButton';
-import FormFeedback from './modules/form/FormFeedback';
-import withRoot from './modules/withRoot';
+import Typography from '/modules/components/Typography';
+import AppFooter from '/modules/views/AppFooter';
+import AppAppBar from '/modules/views/AppAppBar';
+import AppForm from '/modules/views/AppForm';
+import { email, required } from '/modules/form/validation';
+import RFTextField from '/modules/form/RFTextField';
+import FormButton from '/modules/form/FormButton';
+import FormFeedback from '/modules/form/FormFeedback';
+import withRoot from '/modules/withRoot';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
@@ -60,15 +60,15 @@ function SignUp() {
     const handleChangeIsPrivate = (event) => {
       setIsPrivate(event.target.value);
     };
-  
+
     const validate = (values) => {
       const errors = required(['how_many_people', 'type_event', 'zip_code', 'isPrivate','total_budget', 'email', 'password'], values);
     };
-  
+
     const handleSubmit = () => {
       setSent(true);
     };
-  
+
     return (
       <React.Fragment>
         <AppAppBar />
@@ -86,7 +86,7 @@ function SignUp() {
         >
           {({ handleSubmit: handleSubmit2, submitting }) => (
             <Box component="form" onSubmit={handleSubmit2} noValidate sx={{ mt: 6 }}>
-              
+
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={12}>
                  <FormControl fullWidth>
@@ -106,7 +106,7 @@ function SignUp() {
                         <MenuItem value={"Eventos para recaudar fondos"}>Eventos para recaudar fondos</MenuItem>
                         <MenuItem value={"Eventos corporativos"}>Eventos corporativos</MenuItem>
                       </Select>
-                  </FormControl>  
+                  </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={9}>
                   <FormControl fullWidth>
@@ -155,7 +155,7 @@ function SignUp() {
                           <MenuItem value={"Privado"}>Privado</MenuItem>
                           <MenuItem value={"Publico"}>Publico</MenuItem>
                         </Select>
-                  </FormControl>  
+                  </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <FormControl fullWidth>
@@ -174,7 +174,7 @@ function SignUp() {
                           <MenuItem value={50000}>$20,001 - $50,000</MenuItem>
                           <MenuItem value={51000}>$50,001 - +$50,001</MenuItem>
                         </Select>
-                  </FormControl>  
+                  </FormControl>
                 </Grid>
               </Grid>
 
@@ -187,7 +187,7 @@ function SignUp() {
                   ) : null
                 }
               </FormSpy>
-              
+
               <FormButton
                 sx={{ mt: 3, mb: 2 }}
                 disabled={submitting || sent}
@@ -204,5 +204,5 @@ function SignUp() {
       </React.Fragment>
     );
   }
-  
+
   export default withRoot(SignUp);

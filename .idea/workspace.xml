@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="bbe83390-20a2-41c3-8173-d471327dce5a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/Privacy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/Terms.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/components/Markdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/modules/components/Markdown.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/views/privacy.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modules/views/terms.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/Categorias.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/Evento.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/ForgotPassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/ForgotPassword.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/RegistrarCliente.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/SignIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/SignUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/Steps.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Steps.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/components/AppBar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/components/Button.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/components/Markdown.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/components/Paper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/components/Snackbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/components/TextField.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/components/Toolbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/components/Typography.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/form/FormButton.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/form/FormFeedback.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/form/RFTextField.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/form/defer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/form/validation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/theme.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/views/AppAppBar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/views/AppFooter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/views/AppForm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/views/ProductCTA.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/views/ProductCategories.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/views/ProductHero.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/views/ProductHeroLayout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/views/ProductHowItWorks.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/views/ProductSmokingHero.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/views/ProductValues.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modules/withRoot.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +63,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pages/modules" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\pepem\Documents\Proyectos\evnt-landing\pages\modules" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -43,11 +86,24 @@
       <updated>1644869206825</updated>
       <workItem from="1644869208208" duration="37000" />
       <workItem from="1644869301155" duration="37000" />
-      <workItem from="1644891329765" duration="175000" />
+      <workItem from="1644891329765" duration="773000" />
+      <workItem from="1644969482907" duration="4000" />
+      <workItem from="1644969495654" duration="1767000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
