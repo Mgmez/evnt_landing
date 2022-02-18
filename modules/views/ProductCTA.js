@@ -6,6 +6,7 @@ import Typography from '../components/Typography';
 import TextField from '../components/TextField';
 import Snackbar from '../components/Snackbar';
 import Button from '../components/Button';
+import { fontFamily } from '@mui/system';
 
 function ProductCTA() {
   const [open, setOpen] = React.useState(false);
@@ -33,10 +34,10 @@ function ProductCTA() {
             }}
           >
             <Box component="form" onSubmit={handleSubmit} sx={{ maxWidth: 400 }}>
-              <Typography variant="h2" component="h2" gutterBottom>
+              <Typography style={{color: "#FFFFFF", fontFamily: "times roman"}} variant="h2" component="h2" gutterBottom>
                 Registrate como proveedor
               </Typography>
-              <Typography variant="h5">
+              <Typography style={{color: "#FFFFFF", fontFamily: "times roman"}} variant="h5">
                 Ingresa tu correo para ser uno de nuestros clientes.
               </Typography>
               <TextField

@@ -17,7 +17,7 @@ function SignUp() {
   const [sent, setSent] = React.useState(false);
 
   const validate = (values) => {
-    const errors = required(['how_many_people', 'type_event', 'zip_code', 'isPrivate','total_budget', 'email', 'password'], values);
+    const errors = required(['how_many_people', 'type_event', 'zip_code', 'isPrivate', 'total_budget', 'email', 'password'], values);
 
     if (!errors.email) {
       const emailError = email(values.email);
@@ -39,7 +39,7 @@ function SignUp() {
       <AppForm>
         <React.Fragment>
           <Typography variant="h3" gutterBottom marked="center" align="center">
-            Platicanos mas sobre tu evento
+            Ingresa tus datos de usuario
           </Typography>
         </React.Fragment>
         <Form
@@ -50,59 +50,11 @@ function SignUp() {
           {({ handleSubmit: handleSubmit2, submitting }) => (
             <Box component="form" onSubmit={handleSubmit2} noValidate sx={{ mt: 6 }}>
               <Grid container spacing={2}>
-                  <Field
-                    autoFocus
-                    component={RFTextField}
-                    disabled={submitting || sent}
-                    autoComplete="given-name"
-                    fullWidth
-                    label="¿Para cuantas personas es el evento?"
-                    name="how_many_people"
-                    required
-                  />
+
                 <Grid item xs={12} sm={6}>
-                  <Field
-                    component={RFTextField}
-                    disabled={submitting || sent}
-                    autoComplete="family-name"
-                    fullWidth
-                    label="Tipo de Evento"
-                    name="type_event"
-                    required
-                  />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  <Field
-                    component={RFTextField}
-                    disabled={submitting || sent}
-                    autoComplete="family-name"
-                    fullWidth
-                    label="Codigo Postal"
-                    name="zip_code"
-                    required
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Field
-                    component={RFTextField}
-                    disabled={submitting || sent}
-                    autoComplete="family-name"
-                    fullWidth
-                    label="Privado o Publico"
-                    name="isPrivate"
-                    required
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Field
-                    component={RFTextField}
-                    disabled={submitting || sent}
-                    autoComplete="family-name"
-                    fullWidth
-                    label="Presupuesto total"
-                    name="total_budget"
-                    required
-                  />
+                  Rol siempre de cliente
                 </Grid>
               </Grid>
               <Field
@@ -147,7 +99,6 @@ function SignUp() {
           )}
         </Form>
       </AppForm>
-      <AppFooter/>
     </React.Fragment>
   );
 }
