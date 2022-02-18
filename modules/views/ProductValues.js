@@ -35,15 +35,15 @@ function ProductValues() {
                 sx={{ height: 55 }}
               />
               <Typography variant="h6" sx={{ my: 5 }}>
-                Los Mejores
+                Clientes
               </Typography>
               <Typography variant="h5">
                 {
-                  'Lorem djkgsjqhwgfjwegfowe'
+                  'Breve Descripcion'
                 }
 
                 {
-                  ', lpwernewkrnkwenrfsdvm.'
+                  ', Lorem.'
                 }
               </Typography>
             </Box>
@@ -57,14 +57,14 @@ function ProductValues() {
                 sx={{ height: 55 }}
               />
               <Typography variant="h6" sx={{ my: 5 }}>
-                Nuevas experiencias
+                Proveedores
               </Typography>
               <Typography variant="h5">
                 {
-                  'Loremjk kjwdvn wkjvnkwnv '
+                  'Breve Descripcion, '
                 }
 
-                {'fjkenfkjwenfkjlnxkshavcbhd.'}
+                {'Lorem.'}
               </Typography>
             </Box>
           </Grid>
@@ -77,11 +77,11 @@ function ProductValues() {
                 sx={{ height: 55 }}
               />
               <Typography variant="h6" sx={{ my: 5 }}>
-                Servicios Unicos
+                Administrador
               </Typography>
               <Typography variant="h5">
-                {'Loremjwdjvwjvve '}
-                {'ewfjknweknvwjegb.'}
+                {'Breve Descripcion '}
+                {'   Lorem.'}
               </Typography>
             </Box>
           </Grid>
