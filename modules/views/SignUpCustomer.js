@@ -1,11 +1,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 import { Field, Form, FormSpy } from 'react-final-form';
 import Typography from '/modules/components/Typography';
-import AppFooter from '/modules/views/AppFooter';
-import AppAppBar from '/modules/views/AppAppBar';
 import AppForm from '/modules/views/AppForm';
 import { email, required } from '/modules/form/validation';
 import RFTextField from '/modules/form/RFTextField';
@@ -13,11 +10,11 @@ import FormButton from '/modules/form/FormButton';
 import FormFeedback from '/modules/form/FormFeedback';
 import withRoot from '/modules/withRoot';
 
-function SignUp() {
+function SignUpCustomer() {
   const [sent, setSent] = React.useState(false);
 
   const validate = (values) => {
-    const errors = required(['how_many_people', 'type_event', 'zip_code', 'isPrivate', 'total_budget', 'email', 'password'], values);
+    const errors = required(['email', 'password', 'password2'], values);
 
     if (!errors.email) {
       const emailError = email(values.email);
@@ -35,7 +32,6 @@ function SignUp() {
 
   return (
     <React.Fragment>
-      <AppAppBar />
       <AppForm>
         <React.Fragment>
           <Typography variant="h3" gutterBottom marked="center" align="center">
@@ -62,7 +58,7 @@ function SignUp() {
                 component={RFTextField}
                 disabled={submitting || sent}
                 fullWidth
-                label="Email"
+                label="Correo Electronico"
                 margin="normal"
                 name="email"
                 required
@@ -74,8 +70,28 @@ function SignUp() {
                 required
                 name="password"
                 autoComplete="new-password"
-                label="Password"
+                label="Contraseña"
                 type="password"
+                margin="normal"
+              />
+              <FormSpy subscription={{ submitError: true }}>
+                {({ submitError }) =>
+                  submitError ? (
+                    <FormFeedback error sx={{ mt: 2 }}>
+                      {submitError}
+                    </FormFeedback>
+                  ) : null
+                }
+              </FormSpy>
+              <Field
+                fullWidth
+                component={RFTextField}
+                disabled={submitting || sent}
+                required
+                name="password2"
+                autoComplete="new-password"
+                label="Confirme Contraseña"
+                type="password2"
                 margin="normal"
               />
               <FormSpy subscription={{ submitError: true }}>
@@ -93,7 +109,7 @@ function SignUp() {
                 color="secondary"
                 fullWidth
               >
-                {submitting || sent ? ' En progreso... ' : 'Registrarme'}
+                {submitting || sent ? ' En progreso... ' : 'Siguiente'}
               </FormButton>
             </Box>
           )}
@@ -103,4 +119,4 @@ function SignUp() {
   );
 }
 
-export default withRoot(SignUp);
+export default withRoot(SignUpCustomer);
