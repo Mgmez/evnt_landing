@@ -3,13 +3,36 @@ import { useState } from 'react';
 import Button from '../components/Button';
 import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
-import { Input } from '@mui/material';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import DatePicker from '@mui/lab/DatePicker';
+import TextField from '@mui/material/TextField';
+import frLocale from 'date-fns/locale/fr';
+
+
+const localeMap = {
+  fr: frLocale,
+};
+
+const maskMap = {
+  fr: '__/__/____',
+};
+
+
 
 const backgroundImage =
   'https://www.protocoloimep.com/app/uploads/2016/11/evento-sostenible.png';
 
+  
+
 export default function ProductHero() {
   const [date, setDate] = useState(Date.now());
+  const [selectedDate, handleDateChange] = useState(new Date());
+  const [value, setValue] = React.useState(null);
+  const [locale, setLocale] = React.useState('fr');
+
+
+
 
   return (
     <ProductHeroLayout
@@ -26,7 +49,7 @@ export default function ProductHero() {
         alt="increase priority"
       />
       <Typography color="inherit" align="center" variant="h2" marked="center">
-      Nosotros te guiamos para que tengas el mejor evento
+        Nosotros te guiamos para que tengas el mejor evento
       </Typography>
       <Typography
         color="inherit"
@@ -36,28 +59,34 @@ export default function ProductHero() {
       >
         Deja esto en nuestras manos.
       </Typography>
-      <Typography variant="body2" align="center">
-      <Input 
-      style={{backgroundColor: "#FFFFFF", marginBottom: "15px"}}
-      type = "date" 
-      value={date} 
-      onChange={(event)=>setDate(event.target.value)} 
-      />
-          </Typography>
-          
-          <Button
+      <Typography  style={{color: "#FFFFFF", marginBottom: "15px"}} variant="body2" align="center">
+      <LocalizationProvider dateAdapter={AdapterDateFns} locale={localeMap[locale]}>
+      <div>
+        <DatePicker
+        disablePast
+        label="Fecha del evento"
+          mask={maskMap[locale]}
+          value={value}
+          onChange={(newValue) => setValue(newValue)}
+          renderInput={(params) => <TextField {...params} />}
+        />
+      </div>
+    </LocalizationProvider>
+      </Typography>
+
+      <Button
         color="secondary"
         variant="contained"
         size="large"
         component="a"
         href='Steps'
-       
+
         sx={{ minWidth: 200 }}
       >
         Inicia tu evento
       </Button>
-          
-    
+
+
       <Typography variant="body2" color="inherit" sx={{ mt: 2 }}>
         Disfruta de la experiencia
       </Typography>
