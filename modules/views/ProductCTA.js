@@ -50,6 +50,7 @@ function ProductCTA() {
                 type="submit"
                 color="primary"
                 variant="contained"
+                href="/SignUpProvider"
                 sx={{ width: '100%' }}
               >
                 Quiero ser proveedor

@@ -8,7 +8,7 @@ import AppAppBar from '/modules/views/AppAppBar';
 import withRoot from '/modules/withRoot';
 import Categories from '/modules/views/Categories';
 import EventForm from '/modules/views/EventForm'
-import SignUp from '/modules//views/SignUp';
+import SignUp from '/modules//views/SignUpCustomer';
 
 const steps = [
   'Llena los datos del evento',
@@ -39,18 +39,71 @@ function Steps() {
     type_event: '',
     total_budget: '',
     isPrivate: '',
+    zip_code: '',
     categories: [],
+    
   });
+  const [eventID, setEventID] = useState()
+
   const handleChange = event =>{
   
     const form = JSON.parse(JSON.stringify(eventForm))
+    if(event.target.name === 'zip_code'){
+      if(isNaN(event.target.value)){
+         return  
+      }
+    }
     form[event.target.name] = event.target.value;
     setEventForm(form)
 
   }
+  const handleChangeCbx = event =>{
+    const form = JSON.parse(JSON.stringify(eventForm))
+    
+    if(event.target.checked){
+      form.categories.push(event.target.name)
+    }else{
+      const ind = form.categories.indexOf(event.target.name)
+      if(ind !== -1){
+        form.categories.splice(ind,1)
+      }
+      
+    }
+    setEventForm(form);
 
-  const submitEvent=()=>{
+  }
 
+  const submitEvent= async()=>{
+    const ruta = 'https://api.evnt.com.mx/event';
+   
+      const dataJSON = JSON.stringify(eventForm)
+      const response= await axios.post(ruta, dataJson)
+      if(response.status===200){
+          ///response
+          setEventID(response.data.event)
+          setStep(page+1)
+      }else{
+        
+      }
+    
+  }
+  const submitEventResource= async()=>{
+    const ruta = 'https://api.evnt.com.mx/event-resource';
+    categories.forEach(async(category)=>{
+      const dataEventRespurse = {
+        event : eventID,
+        subCategory: category,
+        description: ''
+      };
+      const dataJSON = JSON.stringify(dataEventRespurse)
+      const response = await axios.post(ruta, dataJson)
+      if(response.status===200){
+
+      }else{
+        
+      }
+    })
+    //axios post event
   }
   const onSubmit=()=>{
 
@@ -66,7 +119,7 @@ function Steps() {
       }
       {
        step == 2 &&
-       <Categories form = {eventForm} handleNextStep={()=>setStep(step+1)} handleSubmit={submitEvent}/>
+       <Categories form = {eventForm} handleNextStep={()=>setStep(step+1)} handleSubmit={submitEvent} handleChangeCbx={handleChangeCbx}/>
       }
       {
        step == 3 &&

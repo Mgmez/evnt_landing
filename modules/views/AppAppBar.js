@@ -13,31 +13,39 @@ const rightLink = {
 function AppAppBar() {
   return (
     <div>
-      <AppBar position="fixed" style={{backgroundColor: "#ff4f6e"}}>
+      <AppBar position="fixed" style={{ backgroundColor: "#ff4f6e" }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Box sx={{ flex: 1, justifyContent: 'flex-start' }} >
-          <Link
-            variant="h6"
-            underline="none"
-            color="inherit"
-            href="/"
-            sx={{ fontSize: 24 }}
-          >
-            <img 
-            src='https://app.evnt.com.mx/img/logo_png_01.822386fa.svg'
-            width={90}
-            />
-          </Link>
+            <Link
+              variant="h6"
+              underline="none"
+              color="inherit"
+              href="/"
+              sx={{ fontSize: 24 }}
+            >
+              <img
+                src='https://app.evnt.com.mx/img/logo_png_01.822386fa.svg'
+                width={90}
+              />
+            </Link>
           </Box>
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-          <Link
+            <Link
               color="inherit"
               variant="h6"
               underline="none"
-              href="https://evnt.com.mx"
-              sx={{ ...rightLink, color: '#111111' }}
+              href="https://app.evnt.com.mx"
+              sx={{ ...rightLink}}
             >
               {'Catalogo'}
+            </Link>
+            <Link
+              variant="h6"
+              underline="none"
+              href="https://app.evnt.com.mx/auth-register-v1"
+              sx={{ ...rightLink, color: '#111111' }}
+            >
+              {'Registrarse'}
             </Link>
             <Link
               color="inherit"
@@ -47,14 +55,6 @@ function AppAppBar() {
               sx={rightLink}
             >
               {'Iniciar Sesión'}
-            </Link>
-            <Link
-              variant="h6"
-              underline="none"
-              href="https://app.evnt.com.mx/auth-register-v1"
-              sx={{ ...rightLink, color: '111111' }}
-            >
-              {'Registrarse'}
             </Link>
           </Box>
         </Toolbar>
