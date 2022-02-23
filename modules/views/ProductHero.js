@@ -59,7 +59,7 @@ export default function ProductHero() {
       >
         Deja esto en nuestras manos.
       </Typography>
-      <Typography  style={{color: "#FFFFFF", marginBottom: "15px"}} variant="body2" align="center">
+      <Typography  style={{backgroundColor: "#FFFFFF", marginBottom: "15px"}} variant="body2" align="center">
       <LocalizationProvider dateAdapter={AdapterDateFns} locale={localeMap[locale]}>
       <div>
         <DatePicker

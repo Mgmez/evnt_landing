@@ -50,7 +50,7 @@ function SignUpCustomer() {
                 <Grid item xs={12} sm={6}>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  Rol siempre de cliente
+                  
                 </Grid>
               </Grid>
               <Field
@@ -91,7 +91,7 @@ function SignUpCustomer() {
                 name="password2"
                 autoComplete="new-password"
                 label="Confirme Contraseña"
-                type="password2"
+                type="password"
                 margin="normal"
               />
               <FormSpy subscription={{ submitError: true }}>
