@@ -12,11 +12,13 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import TextField from '@mui/material/TextField';
+
 
 
 function EventForm({ onChange, handleNextStep, form }) {
   const [sent, setSent] = React.useState(false);
- 
+
   const validate = (values) => {
     const errors = required(['how_many_people', 'type_event', 'zip_code', 'isPrivate', 'total_budget', 'email', 'password'], values);
   };
@@ -82,28 +84,32 @@ function EventForm({ onChange, handleNextStep, form }) {
                   </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={3}>
-                  <Field
-                    component={RFTextField}
-                    disabled={submitting || sent}
-                    autoComplete=""
-                    fullWidth
+                  <TextField
                     label="Codigo Postal"
+                    id="zip_code"
+                    size="normal"                  
+                    disabled={submitting || sent}
                     name="zip_code"
+                    value={form.zip_code}
                     required
+                    onChange={onChange}
+                    inputProps={{ inputMode: 'numeric', maxLength: 5, pattern: '[0-9]*' }}                   
                   />
+                 
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Privado o Publico</InputLabel>
                     <Select
+
                       name='isPrivate'
                       disabled={submitting || sent}
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       value={form.isPrivate}
                       label="Privado o Publico"
-                      onChange={onChange}
                       required
+                      onChange={onChange}
                     >
                       <MenuItem value={true}>Privado</MenuItem>
                       <MenuItem value={false}>Publico</MenuItem>
