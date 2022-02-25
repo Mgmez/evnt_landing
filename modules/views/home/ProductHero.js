@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
-import Button from '../components/Button';
-import Typography from '../components/Typography';
+import Button from '/modules/components/Button';
+import Typography from '/modules/components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
@@ -63,7 +63,7 @@ export default function ProductHero() {
       <LocalizationProvider dateAdapter={AdapterDateFns} locale={localeMap[locale]}>
       <div>
         <DatePicker
-        disablePast
+        disableFuture
         label="Fecha del evento"
           mask={maskMap[locale]}
           value={value}

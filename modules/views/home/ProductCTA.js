@@ -2,10 +2,10 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
-import Typography from '../components/Typography';
-import TextField from '../components/TextField';
-import Snackbar from '../components/Snackbar';
-import Button from '../components/Button';
+import Typography from '/modules/components/Typography';
+import TextField from '/modules/components/TextField';
+import Snackbar from '/modules/components/Snackbar';
+import Button from '/modules/components/Button';
 import { fontFamily } from '@mui/system';
 
 function ProductCTA() {
@@ -37,15 +37,6 @@ function ProductCTA() {
               <Typography style={{color: "#FFFFFF", fontFamily: "times roman"}} variant="h2" component="h2" gutterBottom>
                 Registrate como proveedor
               </Typography>
-              <Typography style={{color: "#FFFFFF", fontFamily: "times roman"}} variant="h5">
-                Ingresa tu correo para ser uno de nuestros clientes.
-              </Typography>
-              <TextField
-                noBorder
-                placeholder="Tu correo electronico"
-                variant="standard"
-                sx={{ width: '100%', mt: 3, mb: 2 }}
-              />
               <Button
                 type="submit"
                 color="primary"
@@ -55,6 +46,9 @@ function ProductCTA() {
               >
                 Quiero ser proveedor
               </Button>
+              <Typography style={{color: "#FFFFFF", fontFamily: "times roman"}} variant="h5">
+                Promociona tus Servicios.
+              </Typography>
             </Box>
           </Box>
         </Grid>

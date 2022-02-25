@@ -3,8 +3,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Field, Form, FormSpy } from 'react-final-form';
 import Typography from '/modules/components/Typography';
-import AppForm from '/modules/views/AppForm';
-import { email, required } from '/modules/form/validation';
+import AppForm from '/modules/views/home/AppForm';
+import { required } from '/modules/form/validation';
 import FormButton from '/modules/form/FormButton';
 import FormFeedback from '/modules/form/FormFeedback';
 import withRoot from '/modules/withRoot';
@@ -20,7 +20,7 @@ function Categories({ form, handleNextStep, handleSubmit, handleChangeCbx }) {
   const [categories, setCategories] = useState([]);
 
   const validate = (values) => {
-    const errors = required(['how_many_people', 'type_event', 'zip_code', 'isPrivate', 'total_budget', 'email', 'password'], values);
+    const errors = required(['email', 'password'], values);
   };
 
   const getCategories = async () => {
@@ -58,20 +58,20 @@ function Categories({ form, handleNextStep, handleSubmit, handleChangeCbx }) {
           validate={validate}
         >
           {({ handleSubmit: handleSubmit2, submitting }) => (
-            <Box component="form" onSubmit={handleNextStep} noValidate={true} sx={{ mt: 6 }}>
+            <Box component="form" onSubmit={handleNextStep} noValidate={false} sx={{ mt: 6 }}>
 
               <Grid container spacing={2}>
                 {
                   categories?.map(category => (
                     <Grid item xs={12} sm={4} key={category.id}>
-                      <FormGroup                       
-        >
-                        <FormControlLabel 
+                      <FormGroup
+                      >
+                        <FormControlLabel
                           control={
-                            <Checkbox  checked={form?.categories?.includes(category.id)} onChange={handleChangeCbx} name = {category?.id} />
-                          } 
-                          label={category?.name }
-                         />
+                            <Checkbox checked={form?.categories?.includes(category.id)} onChange={handleChangeCbx} name={category?.id} />
+                          }
+                          label={category?.name}
+                        />
                       </FormGroup>
                     </Grid>
                   ))

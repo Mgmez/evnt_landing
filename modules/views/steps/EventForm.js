@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Field, Form, FormSpy } from 'react-final-form';
 import Typography from '/modules/components/Typography';
-import AppForm from '/modules/views/AppForm';
+import AppForm from '/modules/views/home/AppForm';
 import { email, required } from '/modules/form/validation';
 import RFTextField from '/modules/form/RFTextField';
 import FormButton from '/modules/form/FormButton';

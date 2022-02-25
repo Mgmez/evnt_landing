@@ -1,20 +1,32 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 import { Field, Form, FormSpy } from 'react-final-form';
 import Typography from '/modules/components/Typography';
-import AppFooter from '/modules/views/AppFooter';
-import AppAppBar from '/modules/views/AppAppBar';
-import AppForm from '/modules/views/AppForm';
+import AppForm from '/modules/views/home/AppForm';
 import { email, required } from '/modules/form/validation';
 import RFTextField from '/modules/form/RFTextField';
 import FormButton from '/modules/form/FormButton';
 import FormFeedback from '/modules/form/FormFeedback';
 import withRoot from '/modules/withRoot';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import DatePicker from '@mui/lab/DatePicker';
+import TextField from '@mui/material/TextField';
+import frLocale from 'date-fns/locale/fr';
 
-function SignUp() {
+const localeMap = {
+  fr: frLocale,
+};
+
+const maskMap = {
+  fr: '__/__/____',
+};
+
+function CustomerInfo() {
   const [sent, setSent] = React.useState(false);
+  const [value, setValue] = React.useState(null);
+  const [locale, setLocale] = React.useState('fr');
 
   const validate = (values) => {
     const errors = required(['email', 'password'], values);
@@ -51,41 +63,48 @@ function SignUp() {
               <Grid container spacing={2}>
 
                 <Grid item xs={12} sm={6}>
+                  <Field
+                    autoComplete="firstName"
+                    component={RFTextField}
+                    disabled={submitting || sent}
+                    fullWidth
+                    label="Nombre(s)"
+                    margin="normal"
+                    name="firstName"
+                    required
+                  />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  Rol siempre de cliente
+                  <Field
+                    autoComplete="lastName"
+                    component={RFTextField}
+                    disabled={submitting || sent}
+                    fullWidth
+                    label="Apellidos"
+                    margin="normal"
+                    name="lastName"
+                    required
+                  />
+                </Grid>
+                <Grid item xs={12} sm={3}>
+                </Grid>
+                <Grid item xs={12} sm={6} style={{ align: "center" }}>
+                  <LocalizationProvider dateAdapter={AdapterDateFns} locale={localeMap[locale]} >
+                    <div>
+                      <DatePicker
+                        label="Fecha de Nacimiento"
+                        mask={maskMap[locale]}
+                        value={value}
+                        onChange={(newValue) => setValue(newValue)}
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    </div>
+                  </LocalizationProvider>
+                </Grid>
+                <Grid item xs={12} sm={3}>
                 </Grid>
               </Grid>
-              <Field
-                autoComplete="firstName"
-                component={RFTextField}
-                disabled={submitting || sent}
-                fullWidth
-                label="Nombre(s)"
-                margin="normal"
-                name="firstName"
-                required
-              />
-              <Field
-                autoComplete="lastName"
-                component={RFTextField}
-                disabled={submitting || sent}
-                fullWidth
-                label="Apellidos"
-                margin="normal"
-                name="lastName"
-                required
-              />
-              <Field
-                autoComplete="birthdayDate"
-                component={RFTextField}
-                disabled={submitting || sent}
-                fullWidth
-                label="Fecha de Nacimiento"
-                margin="normal"
-                name="birthdayDate"
-                required
-              />
+
               <FormSpy subscription={{ submitError: true }}>
                 {({ submitError }) =>
                   submitError ? (
@@ -111,4 +130,4 @@ function SignUp() {
   );
 }
 
-export default withRoot(SignUp);
+export default withRoot(CustomerInfo);
