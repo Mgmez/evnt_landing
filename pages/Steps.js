@@ -9,7 +9,6 @@ import withRoot from '/modules/withRoot';
 import Categories from '/modules/views/steps/Categories';
 import EventForm from '/modules/views/steps/EventForm'
 import SignUpCustomer from '/modules/views/steps/SignUpCustomer';
-import CustomerInfo from '/modules/views/steps/CustomerInfo'
 import CircularProgress from '@mui/material/CircularProgress';
 import axios from 'axios';
 
@@ -38,6 +37,7 @@ function HorizontalLabelPositionBelowStepper({ step }) {
 function Steps() {
   const [step, setStep] = useState(1);
   const [eventForm, setEventForm] = useState({
+    name: '',
     how_many_people: '',
     type_event: '',
     total_budget: '',
@@ -136,10 +136,11 @@ function Steps() {
   const submit = async (event) => {
     event.preventDefault()
     setLoading(true)
-    const ruta = 'https://api.evnt.com.mx/user';
+    const rutaUser = 'https://api.evnt.com.mx/user';
     const rutaCustomer = 'https://api.evnt.com.mx/customer';
     const rutaEvent = 'https://api.evnt.com.mx/event';
     const rutaEventResource = 'https://api.evnt.com.mx/event-resource';
+    const rutaLogin = 'https://api.evnt.com.mx/auth/login';
     //userData.birthdayDate = `${new Date(userData.birthdayDate).getFullYear()}-${new Date(userData.birthdayDate).getMonth()}-${new Date(userData.birthdayDate).getDay()}`
 
     const dataUser = {
@@ -148,38 +149,49 @@ function Steps() {
       plan: 'free',
     };
 
-    const dataJSON = JSON.stringify(dataUser)
-    const response = await axios.post(ruta, dataJSON)
-    if (response.status === 200) {
-      const id = await response.json().id
+    const response = await axios.post(rutaUser, dataUser)
+
+    if (response.status === 201) {
+
+      const idUser = await response.data.id
       const dataCustomer = {
         ...dataUser,
-        user:id
+        user: idUser,
       }
+      const responsePostCustomer = await axios.post(rutaCustomer, dataCustomer)
 
-      const responsePostCustomer = await axios.post(rutaCustomer, JSON.stringify(dataCustomer))
-      if (responsePostCustomer.status === 200) {
-        const idCustomer = await response.json().id
-             
-        const responsePostEvent = await axios.post(rutaEvent, JSON.stringify(eventForm))
-        if (responsePostEvent.status === 200) {
-          const eventID = await responsePostEvent.json().id
+      if (responsePostCustomer.status === 201) {
+
+        const idCustomer = await responsePostCustomer.data.id
+        const dataeventForm = {
+          ...eventForm,
+          customer: idCustomer,
+          date: '2022-02-15T05:18:55.118Z',
+          description: 'descripcion',
+        }
+        const responsePostEvent = await axios.post(rutaEvent, dataeventForm)
+
+        if (responsePostEvent.status === 201) {
+
+          const eventID = await responsePostEvent.data.id
           eventForm.categories.forEach(async (category) => {
+
             const dataEventResourse = {
               event: eventID,
               subCategory: category,
-              description: '',
-              customer: idCustomer
+              description: ''
             };
-            const EveResdataJSON = JSON.stringify(dataEventResourse)
-            const responseEveRes = await axios.post(rutaEventResource, EveResdataJSON)
-            if (responseEveRes.status === 200) {
-              
+            const responseEveRes = await axios.post(rutaEventResource, dataEventResourse)
+            if (responseEveRes.status === 201) {
+
+
             } else {
 
             }
           })
-          window.location.href = "https://app.evnt.com.mx/my-events";
+          const responselogin = await axios.post(rutaLogin, dataUser)
+          const tokenLogin = await responselogin.data.access_token
+          window.location.href = [`https://app.evnt.com.mx/my-events?login=${tokenLogin}`]
         }
 
       }
