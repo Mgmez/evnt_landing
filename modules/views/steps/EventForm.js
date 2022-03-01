@@ -5,7 +5,6 @@ import { Field, Form, FormSpy } from 'react-final-form';
 import Typography from '/modules/components/Typography';
 import AppForm from '/modules/views/home/AppForm';
 import { email, required } from '/modules/form/validation';
-import RFTextField from '/modules/form/RFTextField';
 import FormButton from '/modules/form/FormButton';
 import FormFeedback from '/modules/form/FormFeedback';
 import FormControl from '@mui/material/FormControl';
@@ -20,7 +19,7 @@ function EventForm({ onChange, handleNextStep, form }) {
   const [sent, setSent] = React.useState(false);
 
   const validate = (values) => {
-    const errors = required(['how_many_people', 'type_event', 'zip_code', 'isPrivate', 'total_budget', 'email', 'password'], values);
+    const errors = required(['how_many_people', 'name', 'type_event', 'zip_code', 'isPrivate', 'total_budget', 'email', 'password'], values);
   };
 
   return (
@@ -40,6 +39,19 @@ function EventForm({ onChange, handleNextStep, form }) {
             <Box component="form" onSubmit={handleNextStep} noValidate={false} sx={{ mt: 6 }}>
 
               <Grid container spacing={2}>
+                <Grid item xs={12} sm={12}>
+                  <TextField
+                    fullWidth
+                    label="Nombre del evento"
+                    id="name"
+                    size="normal"
+                    disabled={submitting || sent}
+                    name="name"
+                    value={form.name}
+                    required
+                    onChange={onChange}
+                  />
+                </Grid>
                 <Grid item xs={12} sm={12}>
                   <FormControl fullWidth>
                     <InputLabel id="type_event">¿Cual es el tipo de evento?</InputLabel>
@@ -87,15 +99,14 @@ function EventForm({ onChange, handleNextStep, form }) {
                   <TextField
                     label="Codigo Postal"
                     id="zip_code"
-                    size="normal"                  
+                    size="normal"
                     disabled={submitting || sent}
                     name="zip_code"
                     value={form.zip_code}
                     required
                     onChange={onChange}
-                    inputProps={{ inputMode: 'numeric', maxLength: 5, pattern: '[0-9]*' }}                   
+                    inputProps={{ inputMode: 'numeric', maxLength: 5, pattern: '[0-9]*' }}
                   />
-                 
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <FormControl fullWidth>
