@@ -8,6 +8,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import DatePicker from '@mui/lab/DatePicker';
 import TextField from '@mui/material/TextField';
 import frLocale from 'date-fns/locale/fr';
+import Link from 'next/link'
 
 
 const localeMap = {
@@ -27,12 +28,22 @@ const backgroundImage =
 
 export default function ProductHero() {
   const [date, setDate] = useState(Date.now());
-  const [selectedDate, handleDateChange] = useState(new Date());
-  const [value, setValue] = React.useState(null);
-  const [locale, setLocale] = React.useState('fr');
+  const [locale, setLocale] = React.useState('es');
 
 
-
+  const formatDate = () => {
+    let d = new Date(date);
+    let month = (d.getMonth() + 1).toString();
+    let day = d.getDate().toString();
+    let year = d.getFullYear();
+    if (month.length < 2) {
+      month = '0' + month;
+    }
+    if (day.length < 2) {
+      day = '0' + day;
+    }
+    return `${year}-${month}-${day}`;
+  }
 
   return (
     <ProductHeroLayout
@@ -63,28 +74,30 @@ export default function ProductHero() {
       <LocalizationProvider dateAdapter={AdapterDateFns} locale={localeMap[locale]}>
       <div>
         <DatePicker
-        disableFuture
+        disablePast
         label="Fecha del evento"
           mask={maskMap[locale]}
-          value={value}
-          onChange={(newValue) => setValue(newValue)}
+          value={date}
+          onChange={(newValue) => setDate(newValue)}
           renderInput={(params) => <TextField {...params} />}
         />
       </div>
     </LocalizationProvider>
       </Typography>
+      <Link href={`/Steps?date=${date}`}>
+        <Button
+          color="secondary"
+          variant="contained"
+          size="large"
+          component="a"
+          
 
-      <Button
-        color="secondary"
-        variant="contained"
-        size="large"
-        component="a"
-        href='Steps'
-
-        sx={{ minWidth: 200 }}
-      >
-        Inicia tu evento
-      </Button>
+          sx={{ minWidth: 200 }}
+        >
+          Inicia tu evento
+        </Button>
+      </Link>
+      
 
 
       <Typography variant="body2" color="inherit" sx={{ mt: 2 }}>
