@@ -9,7 +9,45 @@ import DatePicker from '@mui/lab/DatePicker';
 import TextField from '@mui/material/TextField';
 import frLocale from 'date-fns/locale/fr';
 import Link from 'next/link'
+import { styled } from '@mui/material/styles';
 
+
+const BootstrapButton = styled(Button)({
+  boxShadow: 'none',
+  textTransform: 'none',
+  fontSize: 16,
+  padding: '15px 30px',
+  border: '1px solid',
+  lineHeight: 1.5,
+  backgroundColor: '#fe607f',
+  borderColor: '#fe4f6f',
+  borderRadius: '50px',
+  fontFamily: [
+    '-apple-system',
+    'BlinkMacSystemFont',
+    '"Segoe UI"',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+    '"Apple Color Emoji"',
+    '"Segoe UI Emoji"',
+    '"Segoe UI Symbol"',
+  ].join(','),
+  '&:hover': {
+    backgroundColor: '#fe607f',
+    borderColor: '#fe94a9',
+    boxShadow: 'none',
+  },
+  '&:active': {
+    boxShadow: 'none',
+    backgroundColor: '#ff5071',
+    borderColor: '#ff718c',
+  },
+  '&:focus': {
+    boxShadow: '#ff5071',
+  },
+});
 
 const localeMap = {
   fr: frLocale,
@@ -24,7 +62,7 @@ const maskMap = {
 const backgroundImage =
   'https://www.protocoloimep.com/app/uploads/2016/11/evento-sostenible.png';
 
-  
+
 
 export default function ProductHero() {
   const [date, setDate] = useState(Date.now());
@@ -70,34 +108,25 @@ export default function ProductHero() {
       >
         Deja esto en nuestras manos.
       </Typography>
-      <Typography  style={{backgroundColor: "#FFFFFF", marginBottom: "15px"}} variant="body2" align="center">
-      <LocalizationProvider dateAdapter={AdapterDateFns} locale={localeMap[locale]}>
-      <div>
-        <DatePicker
-        disablePast
-        label="Fecha del evento"
-          mask={maskMap[locale]}
-          value={date}
-          onChange={(newValue) => setDate(newValue)}
-          renderInput={(params) => <TextField {...params} />}
-        />
-      </div>
-    </LocalizationProvider>
+      <Typography style={{ backgroundColor: "#FFFFFF", marginBottom: "15px" }} variant="body2" align="center">
+        <LocalizationProvider dateAdapter={AdapterDateFns} locale={localeMap[locale]}>
+          <div>
+            <DatePicker
+              disablePast
+              label="Fecha del evento"
+              mask={maskMap[locale]}
+              value={date}
+              onChange={(newValue) => setDate(newValue)}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </div>
+        </LocalizationProvider>
       </Typography>
       <Link href={`/Steps?date=${date}`}>
-        <Button
-          color="secondary"
-          variant="contained"
-          size="large"
-          component="a"
-          
-
-          sx={{ minWidth: 200 }}
-        >
-          Inicia tu evento
-        </Button>
+        <BootstrapButton variant="contained" disableRipple>
+        INICIA TU EVENTO
+      </BootstrapButton>
       </Link>
-      
 
 
       <Typography variant="body2" color="inherit" sx={{ mt: 2 }}>
