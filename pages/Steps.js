@@ -189,9 +189,11 @@ function Steps() {
 
             }
           })
-          const responselogin = await axios.post(rutaLogin, dataUser)
-          const tokenLogin = await responselogin.data.access_token
-          window.location.href = [`https://app.evnt.com.mx/my-events?login=${tokenLogin}`]
+          const email = await dataUser.email
+          const pass = await dataUser.password
+          const redirect = true
+
+          window.location.href = [`https://app.evnt.com.mx/login?email=${email}&password=${pass}&autologin=${redirect}`]
         }
 
       }
