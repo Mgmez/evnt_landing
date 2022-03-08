@@ -1,11 +1,10 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { Field, Form, FormSpy } from 'react-final-form';
+import { Form, FormSpy } from 'react-final-form';
 import Typography from '/modules/components/Typography';
 import AppForm from '/modules/views/home/AppForm';
 import { email, required } from '/modules/form/validation';
-import RFTextField from '/modules/form/RFTextField';
 import FormButton from '/modules/form/FormButton';
 import FormFeedback from '/modules/form/FormFeedback';
 import withRoot from '/modules/withRoot';
@@ -15,7 +14,7 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import DatePicker from '@mui/lab/DatePicker';
 import TextField from '@mui/material/TextField';
-import frLocale from 'date-fns/locale/fr';
+import frLocale from 'date-fns/locale/es';
 
 const localeMap = {
   fr: frLocale,
@@ -29,7 +28,7 @@ const maskMap = {
 function SignUpCustomer({ form, hasAccount, handleChangeUserData, toggleHasAccount,handleChangeBD, handleSubmitData }) {
   const [sent, setSent] = React.useState(false);
   const [value, setValue] = React.useState(null);
-  const [locale, setLocale] = React.useState('es');
+  const [locale, setLocale] = React.useState('fr');
 
   const validate = (values) => {
     const errors = required(['email', 'password', 'password2'], values);
