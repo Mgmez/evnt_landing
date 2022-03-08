@@ -7,9 +7,17 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import DatePicker from '@mui/lab/DatePicker';
 import TextField from '@mui/material/TextField';
-import frLocale from 'date-fns/locale/fr';
+import frLocale from 'date-fns/locale/es';
 import Link from 'next/link'
 import { styled } from '@mui/material/styles';
+import styles from '/styles/ProductHero.module.css';
+import { useRouter } from 'next/router';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+import Snackbar from '@mui/material/Snackbar';
+
+
+
 
 
 const BootstrapButton = styled(Button)({
@@ -60,28 +68,35 @@ const maskMap = {
 
 
 const backgroundImage =
-  'https://www.protocoloimep.com/app/uploads/2016/11/evento-sostenible.png';
+  'https://cdn.shopify.com/s/files/1/0272/5199/8797/t/13/assets/pf-354361f8--Eventos.jpg?v=1606964038';
 
 
 
 export default function ProductHero() {
-  const [date, setDate] = useState(Date.now());
-  const [locale, setLocale] = React.useState('es');
+  const [date, setDate] = useState(null);
+  const [locale, setLocale] = React.useState('fr');
+  const router = useRouter();
+
+  const [state, setState] = React.useState({
+    open: false,
+    vertical: 'top',
+    horizontal: 'center',
+  });
+
+  const { vertical, horizontal, open } = state;
+
+  const handleClick = (newState) => () => {
+    if (!date) {
+      setState({ open: true, ...newState });
+    } else {
+      router.push(`/Steps?date=${date}`)
+    }
+  };
+  const handleClose = () => {
+    setState({ ...state, open: false });
+  };
 
 
-  const formatDate = () => {
-    let d = new Date(date);
-    let month = (d.getMonth() + 1).toString();
-    let day = d.getDate().toString();
-    let year = d.getFullYear();
-    if (month.length < 2) {
-      month = '0' + month;
-    }
-    if (day.length < 2) {
-      day = '0' + day;
-    }
-    return `${year}-${month}-${day}`;
-  }
 
   return (
     <ProductHeroLayout
@@ -106,27 +121,46 @@ export default function ProductHero() {
         variant="h5"
         sx={{ mb: 4, mt: { sx: 4, sm: 10 } }}
       >
-        Deja esto en nuestras manos.
+        SELECCIONA LA FECHA DEL EVENTO:
       </Typography>
-      <Typography style={{ backgroundColor: "#FFFFFF", marginBottom: "15px" }} variant="body2" align="center">
+      <Typography>
+
         <LocalizationProvider dateAdapter={AdapterDateFns} locale={localeMap[locale]}>
-          <div>
-            <DatePicker
-              disablePast
-              label="Fecha del evento"
-              mask={maskMap[locale]}
-              value={date}
-              onChange={(newValue) => setDate(newValue)}
-              renderInput={(params) => <TextField {...params} />}
-            />
-          </div>
+          <DatePicker
+            disablePast
+            format="dd/MM/yyyy"
+            mask={maskMap[locale]}
+            value={date}
+            onChange={(newValue) => setDate(newValue)}
+            renderInput={(params) => <TextField className={styles.datepicker} {...params} />}
+          />
         </LocalizationProvider>
       </Typography>
-      <Link href={`/Steps?date=${date}`}>
-        <BootstrapButton variant="contained" disableRipple>
+
+
+
+
+      <BootstrapButton variant="contained" disableRipple onClick={handleClick({
+          vertical: 'top',
+          horizontal: 'center',
+        })}>
         INICIA TU EVENTO
+
+        <Snackbar 
+        anchorOrigin={{ vertical, horizontal }}
+        open={open}
+        onClose={handleClose}
+        key={vertical + horizontal} 
+        autoHideDuration={500} 
+        onClose={handleClose}>
+        <Alert onClose={handleClose} severity="warning" sx={{ width: '100%' }}>
+          Selecciona una fecha
+        </Alert>
+      </Snackbar>
       </BootstrapButton>
-      </Link>
+
+
+
 
 
       <Typography variant="body2" color="inherit" sx={{ mt: 2 }}>
