@@ -12,6 +12,9 @@ import SignUpCustomer from '/modules/views/steps/SignUpCustomer';
 import CircularProgress from '@mui/material/CircularProgress';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
+
 
 const steps = [
   'Llena los datos del evento',
@@ -37,8 +40,11 @@ function HorizontalLabelPositionBelowStepper({ step }) {
 
 
 
+
+
+
 function Steps() {
-  
+
   const router = useRouter()
   const [step, setStep] = useState(1);
   const [eventForm, setEventForm] = useState({
@@ -155,76 +161,20 @@ function Steps() {
 
     if (hasAccount === true) {
 
-      const responsePostLogin = await axios.post(rutaLogin, dataUser)
+      try {
 
-      if (responsePostLogin.status === 201) {
+        const responsePostLogin = await axios.post(rutaLogin, dataUser)
 
-        const idCustomer = await responsePostLogin.data.type_id
-        console.log(idCustomer)
-        const dataeventForm = {
-          ...eventForm,
-          customer: idCustomer,
-          description: 'Evento creado desde Landingpage',
-        }
-        const responsePostEvent = await axios.post(rutaEvent, dataeventForm)
-        if (responsePostEvent.status === 201) {
+        if (responsePostLogin.status === 201) {
 
-          const eventID = await responsePostEvent.data.id
-          eventForm.categories.forEach(async (category) => {
-
-            const dataEventResourse = {
-              event: eventID,
-              subCategory: category,
-              description: ''
-            };
-            const responseEveRes = await axios.post(rutaEventResource, dataEventResourse)
-            if (responseEveRes.status === 201) {
-
-
-            } else {
-
-            }
-          })
-          const email = dataUser.email
-          const pass = dataUser.password
-          const redirect = true
-
-          window.location.href = [`https://app.evnt.com.mx/login?email=${email}&password=${pass}&autologin=${redirect}`]
-
-        }
-      }
-
-    }
-    else {
-      if(userData.password !== userData.password2){
-          alert('Las contraseñas no coinciden')
-          return
-      }
-      
-      const response = await axios.post(rutaUser, dataUser)
-
-
-      if (response.status === 201) {
-
-        const idUser = await response.data.id
-        const dataCustomer = {
-          ...dataUser,
-          user: idUser,
-        }
-        try{
-          const responsePostCustomer = await axios.post(rutaCustomer, dataCustomer)
-
-        if (responsePostCustomer?.status === 201) {
-
-          const idCustomer = await responsePostCustomer?.data?.id
+          const idCustomer = await responsePostLogin.data.type_id
+          console.log(idCustomer)
           const dataeventForm = {
             ...eventForm,
             customer: idCustomer,
-            
             description: 'Evento creado desde Landingpage',
           }
           const responsePostEvent = await axios.post(rutaEvent, dataeventForm)
-
           if (responsePostEvent.status === 201) {
 
             const eventID = await responsePostEvent.data.id
@@ -248,18 +198,70 @@ function Steps() {
             const redirect = true
 
             window.location.href = [`https://app.evnt.com.mx/login?email=${email}&password=${pass}&autologin=${redirect}`]
+
           }
-
-        }}catch(error){
-          console.log(error?.response?.data)
-          
-          alert('Error, cliente ya existe')
-          
         }
+      } catch (error) { alert('Error, cliente no existe') }
+
+    }
+    else {
+      if (userData.password !== userData.password2) {
+        alert('Las contraseñas no coinciden')
+        return
+      }
+
+      const response = await axios.post(rutaUser, dataUser)
 
 
+      if (response.status === 201) {
+
+        const idUser = await response.data.id
+        const dataCustomer = {
+          ...dataUser,
+          user: idUser,
+        }
+        try {
+          const responsePostCustomer = await axios.post(rutaCustomer, dataCustomer)
+
+          if (responsePostCustomer?.status === 201) {
+
+            const idCustomer = await responsePostCustomer?.data?.id
+            const dataeventForm = {
+              ...eventForm,
+              customer: idCustomer,
+              description: 'Evento creado desde Landingpage',
+            }
+            const responsePostEvent = await axios.post(rutaEvent, dataeventForm)
+
+            if (responsePostEvent.status === 201) {
+
+              const eventID = await responsePostEvent.data.id
+              eventForm.categories.forEach(async (category) => {
+
+                const dataEventResourse = {
+                  event: eventID,
+                  subCategory: category,
+                  description: ''
+                };
+                const responseEveRes = await axios.post(rutaEventResource, dataEventResourse)
+                if (responseEveRes.status === 201) {
+
+
+                } else {
+
+                }
+              })
+              const email = dataUser.email
+              const pass = dataUser.password
+              const redirect = true
+
+              window.location.href = [`https://app.evnt.com.mx/login?email=${email}&password=${pass}&autologin=${redirect}`]
+            }
+
+          }
+        } catch (error) { alert('Error, cliente ya existe') }
       } else {
-          
+
       }
     }
 
