@@ -95,19 +95,6 @@ function EventForm({ onChange, handleNextStep, form }) {
                     </Select>
                   </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={3}>
-                  <TextField
-                    label="Codigo Postal"
-                    id="zip_code"
-                    size="normal"
-                    disabled={submitting || sent}
-                    name="zip_code"
-                    value={form.zip_code}
-                    required
-                    onChange={onChange}
-                    inputProps={{ inputMode: 'numeric', maxLength: 5, pattern: '[0-9]*' }}
-                  />
-                </Grid>
                 <Grid item xs={12} sm={6}>
                   <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Privado o Publico</InputLabel>
