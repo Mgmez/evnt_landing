@@ -123,7 +123,7 @@ export default function ProductHero() {
       >
         SELECCIONA LA FECHA DEL EVENTO:
       </Typography>
-      <Typography>
+      <Typography style={{marginBottom: "15px" }}>
 
         <LocalizationProvider dateAdapter={AdapterDateFns} locale={localeMap[locale]}>
           <DatePicker
