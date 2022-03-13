@@ -37,7 +37,7 @@ function AppAppBar() {
               href="https://app.evnt.com.mx"
               sx={{ ...rightLink}}
             >
-              {'Catalogo'}
+              {'Catalogo '} <br /> {'de Proveedores'}
             </Link>
             <Link
               variant="h6"
