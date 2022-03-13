@@ -15,6 +15,8 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import DatePicker from '@mui/lab/DatePicker';
 import TextField from '@mui/material/TextField';
 import frLocale from 'date-fns/locale/es';
+import Link from '@mui/material/Link';
+
 
 const localeMap = {
   fr: frLocale,
@@ -25,7 +27,7 @@ const maskMap = {
 };
 
 
-function SignUpCustomer({ form, hasAccount, handleChangeUserData, toggleHasAccount,handleChangeBD, handleSubmitData }) {
+function SignUpCustomer({ form, hasAccount, handleChangeUserData, toggleHasAccount, handleChangeBD, handleSubmitData }) {
   const [sent, setSent] = React.useState(false);
   const [value, setValue] = React.useState(null);
   const [locale, setLocale] = React.useState('fr');
@@ -44,9 +46,9 @@ function SignUpCustomer({ form, hasAccount, handleChangeUserData, toggleHasAccou
   };
 
 
- 
 
- 
+
+
   const [alignment, setAlignment] = React.useState('web');
 
   const handleChange = (event, newAlignment) => {
@@ -67,7 +69,7 @@ function SignUpCustomer({ form, hasAccount, handleChangeUserData, toggleHasAccou
           validate={validate}
         >
           {({ handleSubmit: handleSubmit2, submitting }) => (
-            <Box component="form"  onSubmit={handleSubmitData} noValidate={false} sx={{ mt: 6 }}>
+            <Box component="form" onSubmit={handleSubmitData} noValidate={false} sx={{ mt: 6 }}>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={2}>
                 </Grid>
@@ -107,6 +109,13 @@ function SignUpCustomer({ form, hasAccount, handleChangeUserData, toggleHasAccou
                   margin="normal"
                   onChange={handleChangeUserData}
                 />
+                {
+                hasAccount &&
+                <>
+                  <Link href="https://app.evnt.com.mx/forgot-password" variant="body2">
+                    {'¿Olvidaste tu contraseña?'}
+                  </Link>
+                </>}
                 {
                   !hasAccount &&
                   <>
@@ -160,7 +169,7 @@ function SignUpCustomer({ form, hasAccount, handleChangeUserData, toggleHasAccou
                             label="Fecha de Nacimiento"
                             mask={maskMap[locale]}
                             value={form.birthdayDate}
-                            onChange={(value)=>handleChangeBD(value)}
+                            onChange={(value) => handleChangeBD(value)}
                             renderInput={(params) => <TextField {...params} />}
                           />
                         </div>
@@ -188,10 +197,13 @@ function SignUpCustomer({ form, hasAccount, handleChangeUserData, toggleHasAccou
                 disabled={submitting || sent}
                 color="secondary"
                 fullWidth
+                onClick={handleSubmit2({
+                  vertical: 'top',
+                  horizontal: 'center',
+                })}
               >
                 {submitting || sent ? ' En progreso... ' : 'Comenzar'}
               </FormButton>
-              
             </Box>
           )}
         </Form>
